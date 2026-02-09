@@ -1,5 +1,5 @@
 // ============================================
-// SERVICE WORKER - Web GIS Kaffrine PWA
+// SERVICE WORKER - GéoWeb Kaffrine PWA
 // Version: 1.0.0
 // ============================================
 
@@ -205,6 +205,6 @@ self.addEventListener('push', (event) => {
   };
   
   event.waitUntil(
-    self.registration.showNotification('Web GIS Kaffrine', options)
+    self.registration.showNotification('GéoWeb Kaffrine', options)
   );
 });

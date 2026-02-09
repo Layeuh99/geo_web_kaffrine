@@ -1,6 +1,6 @@
 {
-  "name": "Web GIS Kaffrine",
-  "short_name": "GIS Kaffrine",
+  "name": "GéoWeb Kaffrine",
+  "short_name": "GéoWeb Kaffrine",
   "description": "Application de cartographie interactive pour la région de Kaffrine avec données géographiques, requêtes spatiales et attributaires",
   "start_url": "/",
   "display": "standalone",

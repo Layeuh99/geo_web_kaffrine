@@ -1,5 +1,5 @@
 /* ============================================
-   Web GIS Kaffrine - Application Moderne
+   GéoWeb Kaffrine - Application Moderne
    Styles principaux
    ============================================ */
 
@@ -748,9 +748,17 @@ font-size: 0.85rem;
 color: #555;
 }
 
-/* ============================================
-   BOUTONS FLOTTANTS
-   ============================================ */
+.legend-subtitle {
+    display: block;
+    margin: 15px 0 10px 0;
+    padding: 8px 0;
+    border-top: 2px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 0.9rem;
+    color: #333;
+    font-weight: 600;
+}
+
 .floating-controls {
 position: fixed;
 bottom: 50px;
