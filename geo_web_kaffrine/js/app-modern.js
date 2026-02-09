@@ -1,5 +1,5 @@
 /**
- * Web GIS Kaffrine - Application Moderne
+ * GéoWeb Kaffrine - Application Moderne
  * Fichier JavaScript principal
  */
 
@@ -50,6 +50,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Configurer la fermeture des panneaux au clic sur la carte
     setupPanelCloseOnMapClick();
+    
+    // S'assurer que le panneau de couches est visible par défaut sur desktop
+    initializePanels();
     
     // Afficher le modal de bienvenue après un court délai
     setTimeout(function() {
@@ -825,6 +828,35 @@ function locateUser() {
 }
 
 // ============================================
+// INITIALISATION DES PANNEAUX
+// ============================================
+function initializePanels() {
+    let isDesktop = window.innerWidth > 768;
+    
+    if (isDesktop) {
+        // Sur desktop, s'assurer que le panneau de couches est visible
+        let leftPanel = document.getElementById('sidebarLeft');
+        let rightPanel = document.getElementById('sidebarRight');
+        
+        if (leftPanel) {
+            leftPanel.classList.remove('collapsed');
+            let leftIcon = leftPanel.querySelector('.panel-toggle i');
+            if (leftIcon) {
+                leftIcon.className = 'fas fa-chevron-left';
+            }
+        }
+        
+        if (rightPanel) {
+            rightPanel.classList.add('collapsed');
+            let rightIcon = rightPanel.querySelector('.panel-toggle i');
+            if (rightIcon) {
+                rightIcon.className = 'fas fa-chevron-left';
+            }
+        }
+    }
+}
+
+// ============================================
 // FONCTIONS UI - PANNEAUX (CORRIGÉ POUR MOBILE)
 // ============================================
 function toggleLeftPanel() {
@@ -1146,7 +1178,7 @@ function downloadKML(data) {
     let kml = '<?xml version="1.0" encoding="UTF-8"?>\n';
     kml += '<kml xmlns="http://www.opengis.net/kml/2.2">\n';
     kml += '<Document>\n';
-    kml += '<name>Web GIS Kaffrine Data</name>\n';
+    kml += '<name>GéoWeb Kaffrine Data</name>\n';
     
     data.features.forEach(function(feature, index) {
         let name = feature.properties.Nom || feature.properties.dept || feature.properties.arr || feature.properties.NOM || 'Feature ' + (index + 1);

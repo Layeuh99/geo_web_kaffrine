@@ -3,7 +3,7 @@
 // Version: 1.0.0
 // ============================================
 
-const CACHE_NAME = 'geoweb-kaffrine-v1';
+const CACHE_NAME = 'web-gis-kaffrine-v1';
 const STATIC_CACHE = 'static-v1';
 const DATA_CACHE = 'data-v1';
 
