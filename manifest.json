@@ -1,0 +1,96 @@
+{
+  "name": "Web GIS Kaffrine",
+  "short_name": "GIS Kaffrine",
+  "description": "Application de cartographie interactive pour la région de Kaffrine avec données géographiques, requêtes spatiales et attributaires",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1e3c72",
+  "theme_color": "#667eea",
+  "orientation": "any",
+  "scope": "/",
+  "lang": "fr",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "categories": ["navigation", "utilities", "travel"],
+  "screenshots": [
+    {
+      "src": "screenshots/screenshot1.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Carte interactive de Kaffrine"
+    },
+    {
+      "src": "screenshots/screenshot2.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Vue mobile de l'application"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Ma Position",
+      "short_name": "Position",
+      "description": "Centrer sur ma position actuelle",
+      "url": "?action=locate",
+      "icons": [{ "src": "icons/shortcut-locate.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Requête Spatiale",
+      "short_name": "Requête",
+      "description": "Ouvrir la requête spatiale",
+      "url": "?action=spatial",
+      "icons": [{ "src": "icons/shortcut-query.png", "sizes": "96x96" }]
+    }
+  ]
+}
