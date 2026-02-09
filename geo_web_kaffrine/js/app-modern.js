@@ -831,12 +831,17 @@ function locateUser() {
 // INITIALISATION DES PANNEAUX
 // ============================================
 function initializePanels() {
+    console.log('[INIT] Initialisation des panneaux...');
     let isDesktop = window.innerWidth > 768;
+    console.log('[INIT] Taille écran:', window.innerWidth, 'Desktop:', isDesktop);
     
     if (isDesktop) {
         // Sur desktop, s'assurer que le panneau de couches est visible
         let leftPanel = document.getElementById('sidebarLeft');
         let rightPanel = document.getElementById('sidebarRight');
+        
+        console.log('[INIT] Panneau gauche trouvé:', leftPanel ? 'oui' : 'non');
+        console.log('[INIT] Panneau droit trouvé:', rightPanel ? 'oui' : 'non');
         
         if (leftPanel) {
             leftPanel.classList.remove('collapsed');
@@ -844,6 +849,7 @@ function initializePanels() {
             if (leftIcon) {
                 leftIcon.className = 'fas fa-chevron-left';
             }
+            console.log('[INIT] Panneau gauche rendu visible');
         }
         
         if (rightPanel) {
@@ -852,6 +858,7 @@ function initializePanels() {
             if (rightIcon) {
                 rightIcon.className = 'fas fa-chevron-left';
             }
+            console.log('[INIT] Panneau droit rendu caché');
         }
     }
 }
