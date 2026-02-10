@@ -1,7 +1,7 @@
-/**
- * GéoWeb Kaffrine - Application Moderne v3.1
- * Fichier JavaScript principal optimisé
- * Performance: Lazy loading, cache intelligent, animations optimisées
+﻿/**
+ * GÃ©oWeb Kaffrine - Application Moderne v3.1
+ * Fichier JavaScript principal optimisÃ©
+ * Performance: Lazy loading, cache intelligent, animations optimisÃ©es
  */
 
 // ============================================
@@ -16,7 +16,7 @@ let highlightLayer;
 let autolinker;
 let bounds_group;
 
-// 🚀 Performance monitoring
+// ðŸš€ Performance monitoring
 const PERFORMANCE = {
   startTime: performance.now(),
   marks: new Map(),
@@ -27,7 +27,7 @@ const PERFORMANCE = {
   }
 };
 
-// 🎯 Lazy loading pour les données
+// ðŸŽ¯ Lazy loading pour les donnÃ©es
 const LAZY_LOAD = {
   loaded: new Set(),
   queue: [],
@@ -43,16 +43,16 @@ const LAZY_LOAD = {
           LAZY_LOAD.loaded.add(layerName);
           resolve();
         }
-      }, Math.random() * 100); // Délai aléatoire pour effet naturel
+      }, Math.random() * 100); // DÃ©lai alÃ©atoire pour effet naturel
     });
   }
 };
 
-// Couches de données
+// Couches de donnÃ©es
 let layers = {};
 let clusters = {};
 
-// Données GeoJSON brutes (déjà chargées par les scripts data/)
+// DonnÃ©es GeoJSON brutes (dÃ©jÃ  chargÃ©es par les scripts data/)
 let geojsonData = {
     Region: typeof json_Region_3 !== 'undefined' ? json_Region_3 : null,
     Departement: typeof json_Departement_4 !== 'undefined' ? json_Departement_4 : null,
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
     updateScale();
     updateZoomLevel();
     
-    // Centrer la carte après un court délai pour s'assurer que tout est chargé
+    // Centrer la carte aprÃ¨s un court dÃ©lai pour s'assurer que tout est chargÃ©
     setTimeout(function() {
         centerMap();
     }, 200);
@@ -84,10 +84,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Configurer la fermeture des panneaux au clic sur la carte
     setupPanelCloseOnMapClick();
     
-    // S'assurer que le panneau de couches est visible par défaut sur desktop
+    // S'assurer que le panneau de couches est visible par dÃ©faut sur desktop
     initializePanels();
     
-    // Afficher le modal de bienvenue après un court délai
+    // Afficher le modal de bienvenue aprÃ¨s un court dÃ©lai
     setTimeout(function() {
         showWelcomeModal();
     }, 500);
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // INITIALISATION DE LA CARTE
 // ============================================
 function initMap() {
-    // Créer la carte
+    // CrÃ©er la carte
     map = L.map('map', {
         zoomControl: false,
         maxZoom: 28,
@@ -126,7 +126,7 @@ function centerMap() {
     // Forcer le recalcul de la taille
     map.invalidateSize();
     
-    // Centrer sur la région de Kaffrine
+    // Centrer sur la rÃ©gion de Kaffrine
     map.fitBounds([[13.721171213050045, -16.131926969286404], [14.821030838950062, -14.310367685713494]]);
 }
 
@@ -134,7 +134,7 @@ function centerMap() {
 // INITIALISATION DES COUCHES
 // ============================================
 function initLayers() {
-    // Créer les panes pour les couches
+    // CrÃ©er les panes pour les couches
     createPane('CartoDbDarkMatter', 400);
     createPane('GoogleHybrid', 401);
     createPane('OSMStandard', 402);
@@ -159,7 +159,7 @@ function initLayers() {
     layers.GoogleHybrid = L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
         pane: 'pane_GoogleHybrid',
         opacity: 1.0,
-        attribution: '<a href="https://www.google.at/permissions/geoguidelines/attr-guide.html">Map data ©2015 Google</a>',
+        attribution: '<a href="https://www.google.at/permissions/geoguidelines/attr-guide.html">Map data Â©2015 Google</a>',
         minZoom: 1,
         maxZoom: 28,
         minNativeZoom: 0,
@@ -169,20 +169,20 @@ function initLayers() {
     layers.OSMStandard = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         pane: 'pane_OSMStandard',
         opacity: 1.0,
-        attribution: '<a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors, CC-BY-SA</a>',
+        attribution: '<a href="https://www.openstreetmap.org/copyright">Â© OpenStreetMap contributors, CC-BY-SA</a>',
         minZoom: 1,
         maxZoom: 28,
         minNativeZoom: 0,
         maxNativeZoom: 19
     });
 
-    // Fond de carte par défaut
+    // Fond de carte par dÃ©faut
     map.addLayer(layers.OSMStandard);
 
-    // Couches de données
+    // Couches de donnÃ©es
     initDataLayers();
 
-    // Ajouter le contrôle des couches au panneau de gauche
+    // Ajouter le contrÃ´le des couches au panneau de gauche
     initLayerControl();
 }
 
@@ -364,7 +364,7 @@ function initDataLayers() {
     }
 }
 
-// Styles pour les départements
+// Styles pour les dÃ©partements
 function styleDepartement(feature) {
     const colors = {
         'BIRKELANE': 'rgba(126,222,43,1.0)',
@@ -554,7 +554,7 @@ function addClassToPopupIfMedia(content, popup) {
 }
 
 // ============================================
-// CONTRÔLE DES COUCHES
+// CONTRÃ”LE DES COUCHES
 // ============================================
 function initLayerControl() {
     let overlaysTree = [
@@ -577,10 +577,10 @@ function initLayerControl() {
         position: 'topright'
     });
 
-    // Ajouter le contrôle personnalisé au panneau de gauche
+    // Ajouter le contrÃ´le personnalisÃ© au panneau de gauche
     let layerControlContainer = document.getElementById('layerControlContainer');
     if (layerControlContainer) {
-        // Créer une liste personnalisée des couches
+        // CrÃ©er une liste personnalisÃ©e des couches
         createCustomLayerControl(layerControlContainer, baseTree, overlaysTree);
     }
 }
@@ -628,7 +628,7 @@ function createCustomLayerControl(container, baseTree, overlaysTree) {
                 <input type="range" min="0" max="100" value="100" 
                        class="opacity-slider" 
                        oninput="changeLayerOpacity('${layerName}', this.value)"
-                       title="Transparence: 0% (transparent) à 100% (opaque)">
+                       title="Transparence: 0% (transparent) Ã  100% (opaque)">
                 <span class="opacity-value">100%</span>
             </div>
         `;
@@ -682,7 +682,7 @@ function changeLayerOpacity(layerName, opacityValue) {
     
     let opacity = opacityValue / 100;
     
-    // Mettre à jour l'opacité de la couche
+    // Mettre Ã  jour l'opacitÃ© de la couche
     layer.eachLayer(function(l) {
         if (l.setStyle) {
             // Pour les couches vectorielles (polygones, lignes)
@@ -696,7 +696,7 @@ function changeLayerOpacity(layerName, opacityValue) {
         }
     });
     
-    // Mettre à jour l'affichage du pourcentage
+    // Mettre Ã  jour l'affichage du pourcentage
     let slider = document.querySelector(`.opacity-slider[oninput*="${layerName}"]`);
     if (slider) {
         let valueSpan = slider.parentElement.querySelector('.opacity-value');
@@ -704,7 +704,7 @@ function changeLayerOpacity(layerName, opacityValue) {
             valueSpan.textContent = opacityValue + '%';
         }
         
-        // Mettre à jour l'icône œil
+        // Mettre Ã  jour l'icÃ´ne Å“il
         let icon = slider.parentElement.querySelector('.opacity-label i');
         if (icon) {
             if (opacityValue == 0) {
@@ -719,16 +719,16 @@ function changeLayerOpacity(layerName, opacityValue) {
 }
 
 // ============================================
-// CONTRÔLES DE CARTE
+// CONTRÃ”LES DE CARTE
 // ============================================
 function initControls() {
-    // Contrôle de localisation
+    // ContrÃ´le de localisation
     locateControl = L.control.locate({
         locateOptions: {maxZoom: 19},
         position: 'topright'
     }).addTo(map);
 
-    // Contrôle de mesure
+    // ContrÃ´le de mesure
     measureControl = new L.Control.Measure({
         position: 'topright',
         primaryLengthUnit: 'meters',
@@ -751,15 +751,15 @@ function initControls() {
 }
 
 // ============================================
-// ÉVÉNEMENTS ET MISES À JOUR DYNAMIQUES
+// Ã‰VÃ‰NEMENTS ET MISES Ã€ JOUR DYNAMIQUES
 // ============================================
 function initEventListeners() {
-    // Coordonnées dynamiques
+    // CoordonnÃ©es dynamiques
     map.on('mousemove', function(e) {
         updateCoordinates(e.latlng);
     });
 
-    // Mise à jour de l'échelle
+    // Mise Ã  jour de l'Ã©chelle
     map.on('zoomend', function() {
         updateScale();
         updateZoomLevel();
@@ -769,12 +769,12 @@ function initEventListeners() {
         updateScale();
     });
 
-    // Clic sur la carte pour les coordonnées
+    // Clic sur la carte pour les coordonnÃ©es
     map.on('click', function(e) {
         updateCoordinates(e.latlng, true);
     });
 
-    // Fermer les modals en cliquant à l'extérieur
+    // Fermer les modals en cliquant Ã  l'extÃ©rieur
     window.onclick = function(event) {
         if (event.target.classList.contains('modal')) {
             event.target.classList.remove('active');
@@ -791,7 +791,7 @@ function updateCoordinates(latlng, clicked = false) {
             coordsElement.innerHTML = `<i class="fas fa-map-marker-alt"></i> ${lat}, ${lng}`;
             
             if (clicked) {
-                // Afficher une popup temporaire avec les coordonnées
+                // Afficher une popup temporaire avec les coordonnÃ©es
                 L.popup()
                     .setLatLng(latlng)
                     .setContent(`<b>Coordonnees:</b><br>Lat: ${lat}<br>Lng: ${lng}`)
@@ -807,7 +807,7 @@ function updateScale() {
     let scaleElement = document.getElementById('scale');
     if (scaleElement) {
         let zoom = map.getZoom();
-        // Calcul approximatif de l'échelle basé sur le zoom
+        // Calcul approximatif de l'Ã©chelle basÃ© sur le zoom
         let scales = {
             1: '1:500M', 2: '1:250M', 3: '1:100M', 4: '1:50M', 5: '1:25M',
             6: '1:15M', 7: '1:10M', 8: '1:5M', 9: '1:2.5M', 10: '1:1M',
@@ -836,13 +836,13 @@ function changeBasemap(basemapName) {
     map.removeLayer(layers.GoogleHybrid);
     map.removeLayer(layers.OSMStandard);
 
-    // Ajouter le fond sélectionné
+    // Ajouter le fond sÃ©lectionnÃ©
     if (layers[basemapName]) {
         map.addLayer(layers[basemapName]);
         currentBasemap = basemapName;
     }
 
-    // Mettre à jour l'UI
+    // Mettre Ã  jour l'UI
     document.querySelectorAll('.basemap-option').forEach(function(el) {
         el.classList.remove('active');
     });
@@ -866,15 +866,15 @@ function locateUser() {
 function initializePanels() {
     console.log('[INIT] Initialisation des panneaux...');
     let isDesktop = window.innerWidth > 768;
-    console.log('[INIT] Taille écran:', window.innerWidth, 'Desktop:', isDesktop);
+    console.log('[INIT] Taille Ã©cran:', window.innerWidth, 'Desktop:', isDesktop);
     
     if (isDesktop) {
         // Sur desktop, s'assurer que le panneau de couches est visible
         let leftPanel = document.getElementById('sidebarLeft');
         let rightPanel = document.getElementById('sidebarRight');
         
-        console.log('[INIT] Panneau gauche trouvé:', leftPanel ? 'oui' : 'non');
-        console.log('[INIT] Panneau droit trouvé:', rightPanel ? 'oui' : 'non');
+        console.log('[INIT] Panneau gauche trouvÃ©:', leftPanel ? 'oui' : 'non');
+        console.log('[INIT] Panneau droit trouvÃ©:', rightPanel ? 'oui' : 'non');
         
         if (leftPanel) {
             leftPanel.classList.remove('collapsed');
@@ -891,136 +891,89 @@ function initializePanels() {
             if (rightIcon) {
                 rightIcon.className = 'fas fa-chevron-left';
             }
-            console.log('[INIT] Panneau droit rendu caché');
+            console.log('[INIT] Panneau droit rendu cachÃ©');
         }
     } else {
-        // Sur mobile, s'assurer que les panneaux sont cachés par défaut
+        // Sur mobile, s'assurer que les panneaux sont cachÃ©s par dÃ©faut
         let leftPanel = document.getElementById('sidebarLeft');
         let rightPanel = document.getElementById('sidebarRight');
         
         if (leftPanel) {
             leftPanel.classList.remove('active');
-            console.log('[INIT] Panneau gauche caché pour mobile');
+            console.log('[INIT] Panneau gauche cachÃ© pour mobile');
         }
         
         if (rightPanel) {
             rightPanel.classList.remove('active');
-            console.log('[INIT] Panneau droit caché pour mobile');
+            console.log('[INIT] Panneau droit cachÃ© pour mobile');
         }
     }
 }
 
 // ============================================
-// FONCTIONS UI - PANNEAUX (CORRIGÉ POUR MOBILE)
+// FONCTIONS UI - PANNEAUX (CORRIGE POUR MOBILE)
 // ============================================
-function toggleLeftPanel() {
-    console.log('[TOGGLE] toggleLeftPanel appelé');
-    let panel = document.getElementById('sidebarLeft');
+function updatePanelChevron(panel) {
+    if (!panel) return;
+    let icon = panel.querySelector('.panel-toggle i');
+    if (!icon) return;
+
+    // Ouvert = chevron vers l'interieur, ferme = chevron vers l'exterieur
+    icon.className = panel.classList.contains('collapsed') ? 'fas fa-chevron-right' : 'fas fa-chevron-left';
+}
+
+function invalidateMapSize() {
+    setTimeout(() => {
+        if (window.map) {
+            map.invalidateSize();
+        }
+    }, 300);
+}
+
+function togglePanel(panelId, otherPanelId) {
+    let panel = document.getElementById(panelId);
+    let otherPanel = document.getElementById(otherPanelId);
     let isMobile = window.innerWidth <= 768;
-    
-    console.log('[TOGGLE] Panel trouvé:', panel ? 'oui' : 'non');
-    console.log('[TOGGLE] Mode mobile:', isMobile, 'Largeur:', window.innerWidth);
-    
+
     if (!panel) {
-        console.error('[TOGGLE] Panneau sidebarLeft non trouvé!');
+        console.error('[TOGGLE] Panneau non trouve:', panelId);
         return;
     }
-    
+
     if (isMobile) {
-        // Sur mobile, utiliser la classe active
-        let isActive = panel.classList.toggle('active');
-        console.log('[TOGGLE] Mobile - active basculé vers:', isActive);
-        
-        // Fermer l'autre panneau s'il est ouvert
-        let rightPanel = document.getElementById('sidebarRight');
-        if (rightPanel) {
-            rightPanel.classList.remove('active');
+        // Sur mobile, "collapsed" force width/visibility a 0 avec !important
+        panel.classList.remove('collapsed');
+        if (otherPanel) {
+            otherPanel.classList.remove('collapsed');
+            otherPanel.classList.remove('active');
         }
-        
-        // Si on ferme le panneau, recentrer la carte après un délai
-        if (!isActive) {
-            setTimeout(() => {
-                if (window.map) {
-                    map.invalidateSize();
-                }
-            }, 300);
-        }
+        panel.classList.toggle('active');
     } else {
-        // Sur desktop, utiliser collapsed
+        panel.classList.remove('active');
+        let willOpen = panel.classList.contains('collapsed');
         panel.classList.toggle('collapsed');
-        let icon = panel.querySelector('.panel-toggle i');
-        if (panel.classList.contains('collapsed')) {
-            // Panneau fermé = icône pointe vers la droite
-            icon.className = 'fas fa-chevron-right';
-            console.log('[TOGGLE] Desktop - panneau gauche fermé');
-        } else {
-            // Panneau ouvert = icône pointe vers la gauche
-            icon.className = 'fas fa-chevron-left';
-            console.log('[TOGGLE] Desktop - panneau gauche ouvert');
+
+        // Un seul panneau ouvert a la fois
+        if (willOpen && otherPanel) {
+            otherPanel.classList.remove('active');
+            otherPanel.classList.add('collapsed');
+            updatePanelChevron(otherPanel);
         }
-        // Redimensionner la carte
-        setTimeout(() => {
-            if (window.map) {
-                map.invalidateSize();
-            }
-        }, 300);
+
+        updatePanelChevron(panel);
     }
+
+    invalidateMapSize();
+}
+
+function toggleLeftPanel() {
+    console.log('[TOGGLE] toggleLeftPanel appele');
+    togglePanel('sidebarLeft', 'sidebarRight');
 }
 
 function toggleRightPanel() {
-    console.log('[TOGGLE] toggleRightPanel appelé');
-    let panel = document.getElementById('sidebarRight');
-    let isMobile = window.innerWidth <= 768;
-    
-    console.log('[TOGGLE] Panel trouvé:', panel ? 'oui' : 'non');
-    console.log('[TOGGLE] Mode mobile:', isMobile, 'Largeur:', window.innerWidth);
-    
-    if (!panel) {
-        console.error('[TOGGLE] Panneau sidebarRight non trouvé!');
-        return;
-    }
-    
-    if (isMobile) {
-        // Sur mobile, utiliser la classe active
-        let isActive = panel.classList.toggle('active');
-        console.log('[TOGGLE] Mobile - active basculé vers:', isActive);
-        
-        // Fermer l'autre panneau s'il est ouvert
-        let leftPanel = document.getElementById('sidebarLeft');
-        if (leftPanel) {
-            leftPanel.classList.remove('active');
-        }
-        
-        // Si on ferme le panneau, recentrer la carte après un délai
-        if (!isActive) {
-            setTimeout(() => {
-                if (window.map) {
-                    map.invalidateSize();
-                }
-            }, 300);
-        }
-    } else {
-        // Sur desktop, utiliser collapsed
-        panel.classList.toggle('collapsed');
-        let icon = panel.querySelector('.panel-toggle i');
-        
-        if (panel.classList.contains('collapsed')) {
-            // Panneau fermé = icône pointe vers la droite
-            icon.className = 'fas fa-chevron-right';
-            console.log('[TOGGLE] Desktop - panneau fermé');
-        } else {
-            // Panneau ouvert = icône pointe vers la gauche
-            icon.className = 'fas fa-chevron-left';
-            console.log('[TOGGLE] Desktop - panneau ouvert');
-        }
-        
-        // Redimensionner la carte
-        setTimeout(() => {
-            if (window.map) {
-                map.invalidateSize();
-            }
-        }, 300);
-    }
+    console.log('[TOGGLE] toggleRightPanel appele');
+    togglePanel('sidebarRight', 'sidebarLeft');
 }
 
 // Fermer les panneaux au clic sur la carte (mobile)
@@ -1038,35 +991,35 @@ function setupPanelCloseOnMapClick() {
 function closeLeftPanel() {
     let panel = document.getElementById('sidebarLeft');
     let isMobile = window.innerWidth <= 768;
-    
+
+    if (!panel) return;
+
     if (isMobile) {
         panel.classList.remove('active');
     } else {
+        panel.classList.remove('active');
         panel.classList.add('collapsed');
-        let icon = panel.querySelector('.panel-toggle i');
-        if (icon) icon.className = 'fas fa-chevron-right';
+        updatePanelChevron(panel);
     }
-    
-    setTimeout(() => {
-        map.invalidateSize();
-    }, 300);
+
+    invalidateMapSize();
 }
 
 function closeRightPanel() {
     let panel = document.getElementById('sidebarRight');
     let isMobile = window.innerWidth <= 768;
-    
+
+    if (!panel) return;
+
     if (isMobile) {
         panel.classList.remove('active');
     } else {
+        panel.classList.remove('active');
         panel.classList.add('collapsed');
-        let icon = panel.querySelector('.panel-toggle i');
-        if (icon) icon.className = 'fas fa-chevron-left';
+        updatePanelChevron(panel);
     }
-    
-    setTimeout(() => {
-        map.invalidateSize();
-    }, 300);
+
+    invalidateMapSize();
 }
 
 function toggleMobileMenu() {
@@ -1090,8 +1043,8 @@ function showSpatialQuery() {
     if (modal) {
         modal.classList.add('active');
     } else {
-        console.error('[ERROR] Modal spatialQueryModal non trouvé');
-        alert('Erreur: Le modal de requête spatiale est introuvable');
+        console.error('[ERROR] Modal spatialQueryModal non trouvÃ©');
+        alert('Erreur: Le modal de requÃªte spatiale est introuvable');
     }
 }
 
@@ -1100,8 +1053,8 @@ function showAttributeQuery() {
     if (modal) {
         modal.classList.add('active');
     } else {
-        console.error('[ERROR] Modal attributeQueryModal non trouvé');
-        alert('Erreur: Le modal de requête attributaire est introuvable');
+        console.error('[ERROR] Modal attributeQueryModal non trouvÃ©');
+        alert('Erreur: Le modal de requÃªte attributaire est introuvable');
     }
 }
 
@@ -1113,7 +1066,7 @@ function closeModal(modalId) {
 // MODAL DE BIENVENUE
 // ============================================
 function showWelcomeModal() {
-    // Vérifier si l'utilisateur a choisi de ne plus afficher
+    // VÃ©rifier si l'utilisateur a choisi de ne plus afficher
     if (localStorage.getItem('hideWelcome') !== 'true') {
         document.getElementById('welcomeModal').classList.add('active');
     }
@@ -1122,7 +1075,7 @@ function showWelcomeModal() {
 function closeWelcomeModal() {
     document.getElementById('welcomeModal').classList.remove('active');
     
-    // Sauvegarder la préférence si coché
+    // Sauvegarder la prÃ©fÃ©rence si cochÃ©
     let dontShow = document.getElementById('dontShowWelcome').checked;
     if (dontShow) {
         localStorage.setItem('hideWelcome', 'true');
@@ -1141,7 +1094,7 @@ function showHome() {
 // GESTION DES THEMES CLAIR/SOMBRE
 // ============================================
 function initTheme() {
-    // Vérifier si un thème est sauvegardé
+    // VÃ©rifier si un thÃ¨me est sauvegardÃ©
     let savedTheme = localStorage.getItem('theme') || 'light';
     if (savedTheme === 'dark') {
         document.body.classList.add('dark-theme');
@@ -1153,10 +1106,10 @@ function toggleTheme() {
     let isDark = document.body.classList.toggle('dark-theme');
     let theme = isDark ? 'dark' : 'light';
     
-    // Sauvegarder le thème
+    // Sauvegarder le thÃ¨me
     localStorage.setItem('theme', theme);
     
-    // Mettre à jour l'icône
+    // Mettre Ã  jour l'icÃ´ne
     updateThemeIcon(theme);
 }
 
@@ -1182,14 +1135,14 @@ function toggleMeasure() {
 }
 
 // ============================================
-// TÉLÉCHARGEMENT DES DONNÉES - CORRIGÉ
+// TÃ‰LÃ‰CHARGEMENT DES DONNÃ‰ES - CORRIGÃ‰
 // ============================================
 function downloadData(format) {
-    console.log('[DOWNLOAD] Tentative de téléchargement au format:', format);
+    console.log('[DOWNLOAD] Tentative de tÃ©lÃ©chargement au format:', format);
     
-    // Vérifier que les couches existent
+    // VÃ©rifier que les couches existent
     if (typeof layers === 'undefined') {
-        alert('Erreur: Les données ne sont pas encore chargées. Veuillez patienter...');
+        alert('Erreur: Les donnÃ©es ne sont pas encore chargÃ©es. Veuillez patienter...');
         return;
     }
     
@@ -1198,7 +1151,7 @@ function downloadData(format) {
         features: []
     };
 
-    // Collecter toutes les données des couches (visibles ou non)
+    // Collecter toutes les donnÃ©es des couches (visibles ou non)
     let layerList = [
         { layer: layers.Region, name: 'Region' },
         { layer: layers.Departement, name: 'Departement' },
@@ -1217,13 +1170,13 @@ function downloadData(format) {
                 let geojson = item.layer.toGeoJSON();
                 if (geojson.features && geojson.features.length > 0) {
                     hasData = true;
-                    // Ajouter le nom de la couche comme propriété
+                    // Ajouter le nom de la couche comme propriÃ©tÃ©
                     geojson.features.forEach(function(f) {
                         f.properties = f.properties || {};
                         f.properties._layerName = item.name;
                     });
                     data.features = data.features.concat(geojson.features);
-                    console.log(`[DOWNLOAD] ${item.name}: ${geojson.features.length} entités`);
+                    console.log(`[DOWNLOAD] ${item.name}: ${geojson.features.length} entitÃ©s`);
                 }
             }
         } catch (e) {
@@ -1233,14 +1186,14 @@ function downloadData(format) {
     });
 
     if (!hasData || data.features.length === 0) {
-        alert('Aucune donnée disponible à télécharger. Les couches ne sont pas encore chargées.');
+        alert('Aucune donnÃ©e disponible Ã  tÃ©lÃ©charger. Les couches ne sont pas encore chargÃ©es.');
         return;
     }
 
-    console.log('[DOWNLOAD] Total:', data.features.length, 'entités au format', format);
+    console.log('[DOWNLOAD] Total:', data.features.length, 'entitÃ©s au format', format);
     
     if (errorLayers.length > 0) {
-        console.warn('[DOWNLOAD] Problèmes avec:', errorLayers.join(', '));
+        console.warn('[DOWNLOAD] ProblÃ¨mes avec:', errorLayers.join(', '));
     }
 
     try {
@@ -1252,14 +1205,14 @@ function downloadData(format) {
                 downloadKML(data);
                 break;
             case 'shapefile':
-                alert('Export Shapefile nécessite une bibliothèque supplémentaire (shp-write). Fonctionnalité en cours de développement.');
+                alert('Export Shapefile nÃ©cessite une bibliothÃ¨que supplÃ©mentaire (shp-write). FonctionnalitÃ© en cours de dÃ©veloppement.');
                 break;
             default:
-                alert('Format non supporté: ' + format);
+                alert('Format non supportÃ©: ' + format);
         }
     } catch (e) {
-        console.error('[DOWNLOAD] Erreur lors du téléchargement:', e);
-        alert('Erreur lors du téléchargement: ' + e.message);
+        console.error('[DOWNLOAD] Erreur lors du tÃ©lÃ©chargement:', e);
+        alert('Erreur lors du tÃ©lÃ©chargement: ' + e.message);
     }
 }
 
@@ -1278,7 +1231,7 @@ function downloadKML(data) {
     let kml = '<?xml version="1.0" encoding="UTF-8"?>\n';
     kml += '<kml xmlns="http://www.opengis.net/kml/2.2">\n';
     kml += '<Document>\n';
-    kml += '<name>GéoWeb Kaffrine Data</name>\n';
+    kml += '<name>GÃ©oWeb Kaffrine Data</name>\n';
     
     data.features.forEach(function(feature, index) {
         let name = feature.properties.Nom || feature.properties.dept || feature.properties.arr || feature.properties.NOM || 'Feature ' + (index + 1);
@@ -1358,19 +1311,19 @@ function downloadGeoJSON(data) {
 }
 
 // ============================================
-// REQUÊTES SPATIALES - CORRIGÉ
+// REQUÃŠTES SPATIALES - CORRIGÃ‰
 // ============================================
 function executeSpatialQuery() {
     let sourceLayerName = document.getElementById('spatialLayer').value;
     let queryType = document.getElementById('spatialQueryType').value;
     let targetLayerName = document.getElementById('targetLayer').value;
 
-    // Récupérer les couches
+    // RÃ©cupÃ©rer les couches
     let sourceLayerObj = getLayerByName(sourceLayerName);
     let targetLayerObj = getLayerByName(targetLayerName);
 
     if (!sourceLayerObj || !targetLayerObj) {
-        alert('Couche source ou cible non trouvée');
+        alert('Couche source ou cible non trouvÃ©e');
         return;
     }
 
@@ -1378,15 +1331,15 @@ function executeSpatialQuery() {
     let sourceCount = 0;
     let matchCount = 0;
 
-    // Pour chaque entité dans la couche source
+    // Pour chaque entitÃ© dans la couche source
     sourceLayerObj.eachLayer(function(sourceFeature) {
         sourceCount++;
         let sourceGeo = sourceFeature.feature.geometry;
         let matched = false;
 
-        // Vérifier avec chaque entité de la couche cible
+        // VÃ©rifier avec chaque entitÃ© de la couche cible
         targetLayerObj.eachLayer(function(targetFeature) {
-            if (matched) return; // Déjà trouvé
+            if (matched) return; // DÃ©jÃ  trouvÃ©
 
             let targetGeo = targetFeature.feature.geometry;
             let intersects = false;
@@ -1408,13 +1361,13 @@ function executeSpatialQuery() {
                 matchCount++;
                 results.push(sourceFeature);
                 
-                // Mettre en évidence
+                // Mettre en Ã©vidence
                 highlightFeaturePermanent(sourceFeature);
             }
         });
     });
 
-    alert(`Requête spatiale terminée:\n${sourceCount} entités analysées\n${matchCount} correspondances trouvées`);
+    alert(`RequÃªte spatiale terminÃ©e:\n${sourceCount} entitÃ©s analysÃ©es\n${matchCount} correspondances trouvÃ©es`);
     
     if (results.length > 0 && results[0].getBounds) {
         map.fitBounds(results[0].getBounds().pad(0.5));
@@ -1424,7 +1377,7 @@ function executeSpatialQuery() {
 }
 
 function getLayerByName(name) {
-    // Vérifier d'abord dans les clusters
+    // VÃ©rifier d'abord dans les clusters
     if (name === 'Ecoles' && clusters.Ecoles) return layers.Ecoles;
     if (name === 'Localites' && clusters.Localites) return layers.Localites;
     if (name === 'Routes') return layers.Routes;
@@ -1435,31 +1388,31 @@ function getLayerByName(name) {
 }
 
 function checkWithin(sourceGeo, targetGeo) {
-    // Vérification simplifiée: si le centroïde de la source est dans la cible
+    // VÃ©rification simplifiÃ©e: si le centroÃ¯de de la source est dans la cible
     let sourceCenter = getCentroid(sourceGeo);
     return pointInPolygon(sourceCenter, targetGeo);
 }
 
 function checkIntersect(sourceGeo, targetGeo) {
-    // Vérification simplifiée: les bounding boxes s'intersectent
+    // VÃ©rification simplifiÃ©e: les bounding boxes s'intersectent
     let sourceBounds = getBounds(sourceGeo);
     let targetBounds = getBounds(targetGeo);
     return boundsIntersect(sourceBounds, targetBounds);
 }
 
 function checkNearby(sourceFeature, targetFeature, distance) {
-    // Calculer la distance entre les centroïdes
+    // Calculer la distance entre les centroÃ¯des
     let sourceCenter = getCentroid(sourceFeature.feature.geometry);
     let targetCenter = getCentroid(targetFeature.feature.geometry);
     let dist = calculateDistance(sourceCenter, targetCenter);
-    return dist <= distance; // distance en mètres
+    return dist <= distance; // distance en mÃ¨tres
 }
 
 function getCentroid(geometry) {
     if (geometry.type === 'Point') {
         return { lat: geometry.coordinates[1], lng: geometry.coordinates[0] };
     }
-    // Pour les autres types, calculer le centroïde simple
+    // Pour les autres types, calculer le centroÃ¯de simple
     let coords = geometry.coordinates;
     if (geometry.type === 'Polygon') coords = coords[0];
     let sumLat = 0, sumLng = 0, count = 0;
@@ -1505,7 +1458,7 @@ function boundsIntersect(b1, b2) {
 }
 
 function pointInPolygon(point, polygon) {
-    // Algorithme ray-casting simplifié
+    // Algorithme ray-casting simplifiÃ©
     if (polygon.type !== 'Polygon') return false;
     let vertices = polygon.coordinates[0];
     let x = point.lng, y = point.lat;
@@ -1523,8 +1476,8 @@ function pointInPolygon(point, polygon) {
 }
 
 function calculateDistance(p1, p2) {
-    // Formule de Haversine pour calculer la distance en mètres
-    let R = 6371000; // Rayon de la Terre en mètres
+    // Formule de Haversine pour calculer la distance en mÃ¨tres
+    let R = 6371000; // Rayon de la Terre en mÃ¨tres
     let lat1 = p1.lat * Math.PI / 180;
     let lat2 = p2.lat * Math.PI / 180;
     let deltaLat = (p2.lat - p1.lat) * Math.PI / 180;
@@ -1550,7 +1503,7 @@ function highlightFeaturePermanent(layer) {
 }
 
 // ============================================
-// REQUÊTES ATTRIBUTAIRES - CORRIGÉ
+// REQUÃŠTES ATTRIBUTAIRES - CORRIGÃ‰
 // ============================================
 function executeAttributeQuery() {
     let layerName = document.getElementById('attributeLayer').value;
@@ -1563,15 +1516,15 @@ function executeAttributeQuery() {
         return;
     }
 
-    // Récupérer la bonne couche
+    // RÃ©cupÃ©rer la bonne couche
     let targetLayer = getLayerByName(layerName);
     
     if (!targetLayer) {
-        alert('Couche non trouvée: ' + layerName);
+        alert('Couche non trouvÃ©e: ' + layerName);
         return;
     }
 
-    // Réinitialiser les styles avant la nouvelle recherche
+    // RÃ©initialiser les styles avant la nouvelle recherche
     resetAllStyles();
 
     let found = false;
@@ -1581,12 +1534,12 @@ function executeAttributeQuery() {
     targetLayer.eachLayer(function(l) {
         if (!l.feature || !l.feature.properties) return;
         
-        // Essayer de trouver le champ (sensible à la casse ou non)
+        // Essayer de trouver le champ (sensible Ã  la casse ou non)
         let propValue = l.feature.properties[field];
         
         // Si le champ n'existe pas directement, essayer des variantes
         if (propValue === undefined) {
-            // Essayer différentes variantes du nom de champ
+            // Essayer diffÃ©rentes variantes du nom de champ
             let fieldVariants = [field, field.toUpperCase(), field.toLowerCase(), 
                 field.charAt(0).toUpperCase() + field.slice(1).toLowerCase()];
             
@@ -1623,8 +1576,8 @@ function executeAttributeQuery() {
     });
 
     if (found) {
-        alert(`${results.length} entité(s) trouvée(s) dans la couche ${layerName}`);
-        // Zoom sur les résultats
+        alert(`${results.length} entitÃ©(s) trouvÃ©e(s) dans la couche ${layerName}`);
+        // Zoom sur les rÃ©sultats
         if (results.length === 1) {
             if (results[0].getBounds) {
                 map.fitBounds(results[0].getBounds().pad(0.5));
@@ -1632,19 +1585,19 @@ function executeAttributeQuery() {
                 map.setView(results[0].getLatLng(), 16);
             }
         } else if (results.length > 1) {
-            // Créer un groupe pour tous les résultats
+            // CrÃ©er un groupe pour tous les rÃ©sultats
             let group = new L.featureGroup(results);
             map.fitBounds(group.getBounds().pad(0.2));
         }
     } else {
-        alert(`Aucune entité trouvée dans ${layerName} avec ${field} ${operator} "${value}"`);
+        alert(`Aucune entitÃ© trouvÃ©e dans ${layerName} avec ${field} ${operator} "${value}"`);
     }
 
     closeModal('attributeQueryModal');
 }
 
 function resetAllStyles() {
-    // Réinitialiser les styles pour toutes les couches
+    // RÃ©initialiser les styles pour toutes les couches
     let allLayers = [layers.Region, layers.Departement, layers.Arrondissement, 
                      layers.Routes, layers.Localites, layers.Ecoles];
     
@@ -1662,11 +1615,11 @@ function resetAllStyles() {
 function clearAttributeQuery() {
     document.getElementById('attributeValue').value = '';
     resetAllStyles();
-    alert('Recherche réinitialisée');
+    alert('Recherche rÃ©initialisÃ©e');
 }
 
 // ============================================
-// REQUÊTES SPATIALES AVANCÉES - Buffer, Intersection, Distance
+// REQUÃŠTES SPATIALES AVANCÃ‰ES - Buffer, Intersection, Distance
 // ============================================
 let currentSpatialQuery = {
     type: 'buffer',
@@ -1681,13 +1634,13 @@ let currentSpatialQuery = {
 function setQueryType(type) {
     currentSpatialQuery.type = type;
     
-    // Mettre à jour l'interface
+    // Mettre Ã  jour l'interface
     document.querySelectorAll('.query-type-btn').forEach(btn => {
         btn.classList.remove('active');
     });
     event.currentTarget.classList.add('active');
     
-    // Afficher les paramètres appropriés
+    // Afficher les paramÃ¨tres appropriÃ©s
     document.getElementById('spatialStep3').style.display = 'block';
     
     if (type === 'buffer') {
@@ -1705,7 +1658,7 @@ function setQueryType(type) {
 function setTargetLayer(layerName) {
     currentSpatialQuery.targetLayer = layerName;
     
-    // Mettre à jour l'interface
+    // Mettre Ã  jour l'interface
     document.querySelectorAll('.layer-btn').forEach(btn => {
         btn.classList.remove('selected');
     });
@@ -1719,7 +1672,7 @@ function updateBufferValue(val) {
 
 function executeSpatialQueryNew() {
     if (!currentSpatialQuery.targetLayer) {
-        alert('Veuillez d\'abord choisir ce que vous cherchez (Écoles, Localités ou Routes)');
+        alert('Veuillez d\'abord choisir ce que vous cherchez (Ã‰coles, LocalitÃ©s ou Routes)');
         return;
     }
     
@@ -1727,7 +1680,7 @@ function executeSpatialQueryNew() {
     closeModal('spatialQueryModal');
     
     // Message
-    alert('Cliquez sur la carte pour définir le point de départ de la recherche');
+    alert('Cliquez sur la carte pour dÃ©finir le point de dÃ©part de la recherche');
     
     // Attendre le clic
     map.once('click', function(e) {
@@ -1737,7 +1690,7 @@ function executeSpatialQueryNew() {
 }
 
 function performSpatialSearch() {
-    // Réinitialiser
+    // RÃ©initialiser
     resetAllStyles();
     
     // Supprimer l'ancien buffer s'il existe
@@ -1749,13 +1702,13 @@ function performSpatialSearch() {
     let targetLayer = getLayerByName(currentSpatialQuery.targetLayer);
     
     if (!targetLayer) {
-        alert('Couche non trouvée');
+        alert('Couche non trouvÃ©e');
         return;
     }
     
     currentSpatialQuery.results = [];
     
-    // Créer le cercle de buffer si nécessaire
+    // CrÃ©er le cercle de buffer si nÃ©cessaire
     if (currentSpatialQuery.type === 'buffer') {
         currentSpatialQuery.bufferCircle = L.circle(point, {
             radius: currentSpatialQuery.bufferDistance,
@@ -1814,10 +1767,10 @@ function performSpatialSearch() {
         currentSpatialQuery.results = currentSpatialQuery.results.slice(0, count);
     }
     
-    // Afficher les résultats
+    // Afficher les rÃ©sultats
     showSpatialResults();
     
-    // ZOOMER automatiquement sur les résultats
+    // ZOOMER automatiquement sur les rÃ©sultats
     zoomToSpatialResults();
 }
 
@@ -1832,7 +1785,7 @@ function showSpatialResults() {
     let count = currentSpatialQuery.results.length;
     
     if (count === 0) {
-        resultsDiv.innerHTML = '<p style="color: #888;"><i class="fas fa-info-circle"></i> Aucun résultat trouvé</p>';
+        resultsDiv.innerHTML = '<p style="color: #888;"><i class="fas fa-info-circle"></i> Aucun rÃ©sultat trouvÃ©</p>';
     } else {
         let html = `<div class="results-list">`;
         
@@ -1851,12 +1804,12 @@ function showSpatialResults() {
         });
         
         html += `</div>`;
-        html += `<p style="text-align: center; color: #667eea; font-weight: 600;">${count} résultat(s) trouvé(s)</p>`;
+        html += `<p style="text-align: center; color: #667eea; font-weight: 600;">${count} rÃ©sultat(s) trouvÃ©(s)</p>`;
         
         resultsDiv.innerHTML = html;
     }
     
-    // Afficher la section résultats
+    // Afficher la section rÃ©sultats
     document.getElementById('spatialStep1').style.display = 'none';
     document.getElementById('spatialStep2').style.display = 'none';
     document.getElementById('spatialStep3').style.display = 'none';
@@ -1870,7 +1823,7 @@ function showSpatialResults() {
 function zoomToSpatialResults() {
     if (currentSpatialQuery.results.length === 0) return;
     
-    // Créer un groupe avec tous les résultats et le point de départ
+    // CrÃ©er un groupe avec tous les rÃ©sultats et le point de dÃ©part
     let features = currentSpatialQuery.results.map(r => r.layer);
     
     // Ajouter le cercle de buffer au groupe si existe
@@ -1902,7 +1855,7 @@ function zoomToSpatialResult(index) {
 }
 
 function resetSpatialQuery() {
-    // Réinitialiser
+    // RÃ©initialiser
     currentSpatialQuery.results = [];
     if (currentSpatialQuery.bufferCircle) {
         map.removeLayer(currentSpatialQuery.bufferCircle);
@@ -1910,7 +1863,7 @@ function resetSpatialQuery() {
     }
     resetAllStyles();
     
-    // Réafficher les étapes
+    // RÃ©afficher les Ã©tapes
     document.getElementById('spatialStep1').style.display = 'block';
     document.getElementById('spatialStep2').style.display = 'block';
     document.getElementById('spatialStep3').style.display = 'block';
@@ -1927,10 +1880,10 @@ function stopSpatialQuery() {
 }
 
 // ============================================
-// REQUÊTES ULTRA-SIMPLES
+// REQUÃŠTES ULTRA-SIMPLES
 // ============================================
 
-// 1. CLIQUER SUR LA CARTE - Requête spatiale ultra-simple
+// 1. CLIQUER SUR LA CARTE - RequÃªte spatiale ultra-simple
 function startClickQuery() {
     // Fermer le modal
     closeModal('spatialQueryModal');
@@ -1945,7 +1898,7 @@ function startClickQuery() {
 }
 
 function findNearPoint(latlng) {
-    // Réinitialiser
+    // RÃ©initialiser
     resetAllStyles();
     
     let results = {
@@ -1954,7 +1907,7 @@ function findNearPoint(latlng) {
         routes: []
     };
     
-    // Chercher les écoles proches (500m)
+    // Chercher les Ã©coles proches (500m)
     if (layers.Ecoles) {
         layers.Ecoles.eachLayer(function(l) {
             if (l.getLatLng) {
@@ -1970,7 +1923,7 @@ function findNearPoint(latlng) {
         });
     }
     
-    // Chercher les localités proches (1km)
+    // Chercher les localitÃ©s proches (1km)
     if (layers.Localites) {
         layers.Localites.eachLayer(function(l) {
             if (l.getLatLng) {
@@ -1986,7 +1939,7 @@ function findNearPoint(latlng) {
         });
     }
     
-    // Afficher les résultats dans le modal
+    // Afficher les rÃ©sultats dans le modal
     showClickResults(results);
 }
 
@@ -1994,23 +1947,23 @@ function showClickResults(results) {
     let content = '';
     
     if (results.ecoles.length > 0) {
-        content += `<div class="query-result-item"><i class="fas fa-graduation-cap"></i> ${results.ecoles.length} école(s)</div>`;
+        content += `<div class="query-result-item"><i class="fas fa-graduation-cap"></i> ${results.ecoles.length} Ã©cole(s)</div>`;
     }
     if (results.localites.length > 0) {
-        content += `<div class="query-result-item"><i class="fas fa-map-marker-alt"></i> ${results.localites.length} localité(s)</div>`;
+        content += `<div class="query-result-item"><i class="fas fa-map-marker-alt"></i> ${results.localites.length} localitÃ©(s)</div>`;
     }
     if (results.routes.length > 0) {
         content += `<div class="query-result-item"><i class="fas fa-road"></i> ${results.routes.length} route(s)</div>`;
     }
     
     if (content === '') {
-        content = '<p style="color: #888;">Rien trouvé à cet endroit. Essayez ailleurs !</p>';
+        content = '<p style="color: #888;">Rien trouvÃ© Ã  cet endroit. Essayez ailleurs !</p>';
     }
     
     document.getElementById('clickQueryContent').innerHTML = content;
     document.getElementById('clickQueryResult').style.display = 'block';
     
-    // Réouvrir le modal pour montrer les résultats
+    // RÃ©ouvrir le modal pour montrer les rÃ©sultats
     showSpatialQuery();
 }
 // 2. CHERCHER UN NOM - Recherche attributaire ultra-simple
@@ -2022,13 +1975,13 @@ function doSuperSearch() {
         return;
     }
     
-    // Réinitialiser
+    // RÃ©initialiser
     resetAllStyles();
     
     let found = [];
     let searchIn = [layers.Ecoles, layers.Localites, layers.Departement, layers.Arrondissement];
     let icons = ['fa-graduation-cap', 'fa-map-marker-alt', 'fa-draw-polygon', 'fa-draw-polygon'];
-    let names = ['École', 'Localité', 'Département', 'Arrondissement'];
+    let names = ['Ã‰cole', 'LocalitÃ©', 'DÃ©partement', 'Arrondissement'];
     
     for (let i = 0; i < searchIn.length; i++) {
         let layer = searchIn[i];
@@ -2037,7 +1990,7 @@ function doSuperSearch() {
         layer.eachLayer(function(l) {
             if (!l.feature || !l.feature.properties) return;
             
-            // Chercher dans toutes les propriétés
+            // Chercher dans toutes les propriÃ©tÃ©s
             for (let key in l.feature.properties) {
                 let val = String(l.feature.properties[key] || '');
                 if (val.toLowerCase().includes(term.toLowerCase())) {
@@ -2062,9 +2015,9 @@ function showSuperSearchResults(found, term) {
     let contentDiv = document.getElementById('superSearchContent');
     
     if (found.length === 0) {
-        contentDiv.innerHTML = `<p style="color: #c62828;"><i class="fas fa-times-circle"></i> Aucun résultat pour "${term}"</p>`;
+        contentDiv.innerHTML = `<p style="color: #c62828;"><i class="fas fa-times-circle"></i> Aucun rÃ©sultat pour "${term}"</p>`;
     } else {
-        let html = `<p style="color: #2e7d32; margin-bottom: 10px;"><i class="fas fa-check-circle"></i> ${found.length} trouvé(s) :</p>`;
+        let html = `<p style="color: #2e7d32; margin-bottom: 10px;"><i class="fas fa-check-circle"></i> ${found.length} trouvÃ©(s) :</p>`;
         
         found.slice(0, 10).forEach(function(item) {
             html += `
@@ -2132,7 +2085,7 @@ function zoomToFeature(name) {
 }
 
 // ============================================
-// REQUÊTES SIMPLIFIÉES - NOUVELLE VERSION
+// REQUÃŠTES SIMPLIFIÃ‰ES - NOUVELLE VERSION
 // ============================================
 
 let spatialSimpleState = {
@@ -2143,7 +2096,7 @@ let spatialSimpleState = {
 
 let attrSearchType = 'nom';
 
-// REQUÊTE SPATIALE SIMPLIFIÉE
+// REQUÃŠTE SPATIALE SIMPLIFIÃ‰E
 function startSpatialSimple(layerName) {
     spatialSimpleState.targetLayer = layerName;
     
@@ -2166,7 +2119,7 @@ function performSpatialSimpleSearch() {
     
     let targetLayer = getLayerByName(spatialSimpleState.targetLayer);
     if (!targetLayer) {
-        alert('Erreur: couche non trouvée');
+        alert('Erreur: couche non trouvÃ©e');
         return;
     }
     
@@ -2204,7 +2157,7 @@ function performSpatialSimpleSearch() {
     // Trier par distance
     spatialSimpleState.results.sort((a, b) => a.distance - b.distance);
     
-    // Afficher les résultats
+    // Afficher les rÃ©sultats
     showSpatialSimpleResults();
     
     // Zoom automatique
@@ -2216,9 +2169,9 @@ function showSpatialSimpleResults() {
     let count = spatialSimpleState.results.length;
     
     if (count === 0) {
-        contentDiv.innerHTML = '<p style="color: #888;"><i class="fas fa-info-circle"></i> Aucun résultat dans un rayon de 1km</p>';
+        contentDiv.innerHTML = '<p style="color: #888;"><i class="fas fa-info-circle"></i> Aucun rÃ©sultat dans un rayon de 1km</p>';
     } else {
-        let html = `<p style="color: #667eea; font-weight: 600; margin-bottom: 10px;">${count} trouvé(s) :</p>`;
+        let html = `<p style="color: #667eea; font-weight: 600; margin-bottom: 10px;">${count} trouvÃ©(s) :</p>`;
         
         spatialSimpleState.results.slice(0, 10).forEach(function(res, index) {
             html += `
@@ -2288,15 +2241,15 @@ function clearSpatialSimple() {
     resetSpatialSimple();
 }
 
-// RECHERCHE ATTRIBUTAIRE SIMPLIFIÉE
+// RECHERCHE ATTRIBUTAIRE SIMPLIFIÃ‰E
 function setSearchType(type) {
     attrSearchType = type;
     
-    // Mettre à jour les boutons
+    // Mettre Ã  jour les boutons
     document.getElementById('btnSearchNom').classList.toggle('active', type === 'nom');
     document.getElementById('btnSearchCode').classList.toggle('active', type === 'code');
     
-    // Mettre à jour le placeholder
+    // Mettre Ã  jour le placeholder
     let input = document.getElementById('attrSearchInput');
     if (type === 'nom') {
         input.placeholder = 'Tapez le nom...';
@@ -2313,12 +2266,12 @@ function executeAttrSearch() {
         return;
     }
     
-    // Réinitialiser
+    // RÃ©initialiser
     resetAllStyles();
     
     let found = [];
     let searchIn = [layers.Ecoles, layers.Localites, layers.Departement, layers.Arrondissement, layers.Region, layers.Routes];
-    let typeNames = ['École', 'Localité', 'Département', 'Arrondissement', 'Région', 'Route'];
+    let typeNames = ['Ã‰cole', 'LocalitÃ©', 'DÃ©partement', 'Arrondissement', 'RÃ©gion', 'Route'];
     
     for (let i = 0; i < searchIn.length; i++) {
         let layer = searchIn[i];
@@ -2383,9 +2336,9 @@ function showAttrResults(found, term) {
     let contentDiv = document.getElementById('attrResultsContent');
     
     if (found.length === 0) {
-        contentDiv.innerHTML = `<p style="color: #c62828;"><i class="fas fa-times-circle"></i> Aucun résultat pour "${term}"</p>`;
+        contentDiv.innerHTML = `<p style="color: #c62828;"><i class="fas fa-times-circle"></i> Aucun rÃ©sultat pour "${term}"</p>`;
     } else {
-        let html = `<p style="color: #2e7d32; margin-bottom: 10px;"><i class="fas fa-check-circle"></i> ${found.length} trouvé(s) :</p>`;
+        let html = `<p style="color: #2e7d32; margin-bottom: 10px;"><i class="fas fa-check-circle"></i> ${found.length} trouvÃ©(s) :</p>`;
         
         found.slice(0, 15).forEach(function(item, index) {
             html += `
@@ -2461,8 +2414,8 @@ function saveMapPosition() {
 }
 
 function restoreMapPosition() {
-    // DÉSACTIVÉ: La carte ne se recentre plus automatiquement au chargement
-    console.log('[MAP] Restauration position désactivée - maintien du zoom actuel');
+    // DÃ‰SACTIVÃ‰: La carte ne se recentre plus automatiquement au chargement
+    console.log('[MAP] Restauration position dÃ©sactivÃ©e - maintien du zoom actuel');
     return false;
 }
 
@@ -2471,7 +2424,7 @@ window.addEventListener('beforeunload', function() {
     saveMapPosition();
 });
 
-// Sauvegarder aussi à chaque mouvement de la carte
+// Sauvegarder aussi Ã  chaque mouvement de la carte
 function initAutoSavePosition() {
     map.on('moveend', function() {
         saveMapPosition();
@@ -2482,7 +2435,7 @@ function initAutoSavePosition() {
 // UTILITAIRES
 // ============================================
 function setBounds() {
-    // Fonction vide pour compatibilité
+    // Fonction vide pour compatibilitÃ©
 }
 
 // Gestion des erreurs
@@ -2502,13 +2455,13 @@ let locationHistory = [];
 let maxLocationHistory = 100;
 
 function locateUser() {
-    // Vérifier si la géolocalisation est supportée
+    // VÃ©rifier si la gÃ©olocalisation est supportÃ©e
     if (!navigator.geolocation) {
-        alert('La géolocalisation n\'est pas supportée par votre navigateur');
+        alert('La gÃ©olocalisation n\'est pas supportÃ©e par votre navigateur');
         return;
     }
     
-    // Options de géolocalisation haute précision
+    // Options de gÃ©olocalisation haute prÃ©cision
     const options = {
         enableHighAccuracy: true,
         timeout: 10000,
@@ -2528,12 +2481,12 @@ function onLocationSuccess(position) {
     const lng = position.coords.longitude;
     const accuracy = position.coords.accuracy;
     
-    console.log('[GEO] Position trouvée:', lat, lng, 'Précision:', accuracy, 'm');
+    console.log('[GEO] Position trouvÃ©e:', lat, lng, 'PrÃ©cision:', accuracy, 'm');
     
     // Centrer la carte sur la position
     map.setView([lat, lng], 16);
     
-    // Mettre à jour ou créer le marqueur de position
+    // Mettre Ã  jour ou crÃ©er le marqueur de position
     updateUserLocationMarker(lat, lng, accuracy);
     
     // Sauvegarder dans l'historique
@@ -2544,16 +2497,16 @@ function onLocationSuccess(position) {
 }
 
 function onLocationError(error) {
-    let message = 'Erreur de géolocalisation: ';
+    let message = 'Erreur de gÃ©olocalisation: ';
     switch(error.code) {
         case error.PERMISSION_DENIED:
-            message += 'Permission refusée. Veuillez autoriser l\'accès à votre position.';
+            message += 'Permission refusÃ©e. Veuillez autoriser l\'accÃ¨s Ã  votre position.';
             break;
         case error.POSITION_UNAVAILABLE:
             message += 'Position indisponible.';
             break;
         case error.TIMEOUT:
-            message += 'Délai expiré.';
+            message += 'DÃ©lai expirÃ©.';
             break;
         default:
             message += 'Erreur inconnue.';
@@ -2571,7 +2524,7 @@ function updateUserLocationMarker(lat, lng, accuracy) {
         map.removeLayer(userLocationCircle);
     }
     
-    // Créer un nouveau marqueur avec une icône personnalisée
+    // CrÃ©er un nouveau marqueur avec une icÃ´ne personnalisÃ©e
     const userIcon = L.divIcon({
         className: 'user-location-marker',
         html: '<div style="background: #3498db; width: 16px; height: 16px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.3);"></div>',
@@ -2581,7 +2534,7 @@ function updateUserLocationMarker(lat, lng, accuracy) {
     
     userLocationMarker = L.marker([lat, lng], { icon: userIcon }).addTo(map);
     
-    // Ajouter un cercle de précision
+    // Ajouter un cercle de prÃ©cision
     userLocationCircle = L.circle([lat, lng], {
         radius: accuracy,
         color: '#3498db',
@@ -2596,7 +2549,7 @@ function updateUserLocationMarker(lat, lng, accuracy) {
             <b>Votre position</b><br>
             Lat: ${lat.toFixed(6)}<br>
             Lng: ${lng.toFixed(6)}<br>
-            Précision: ${Math.round(accuracy)}m
+            PrÃ©cision: ${Math.round(accuracy)}m
         </div>
     `;
     userLocationMarker.bindPopup(popupContent);
@@ -2616,7 +2569,7 @@ function addToLocationHistory(lat, lng, accuracy) {
 }
 
 function showLocationNotification(lat, lng, accuracy) {
-    // Créer une notification visuelle
+    // CrÃ©er une notification visuelle
     const notification = document.createElement('div');
     notification.style.cssText = `
         position: fixed;
@@ -2635,9 +2588,9 @@ function showLocationNotification(lat, lng, accuracy) {
         <div style="display: flex; align-items: center; gap: 10px;">
             <i class="fas fa-map-marker-alt" style="font-size: 1.5rem;"></i>
             <div>
-                <div style="font-weight: 600;">Position trouvée !</div>
+                <div style="font-weight: 600;">Position trouvÃ©e !</div>
                 <div style="font-size: 0.85rem; opacity: 0.9;">
-                    Précision: ${Math.round(accuracy)}m
+                    PrÃ©cision: ${Math.round(accuracy)}m
                 </div>
             </div>
         </div>
@@ -2645,7 +2598,7 @@ function showLocationNotification(lat, lng, accuracy) {
     
     document.body.appendChild(notification);
     
-    // Supprimer après 3 secondes
+    // Supprimer aprÃ¨s 3 secondes
     setTimeout(() => {
         notification.style.animation = 'slideOut 0.3s ease';
         setTimeout(() => notification.remove(), 300);
@@ -2654,7 +2607,7 @@ function showLocationNotification(lat, lng, accuracy) {
 
 function startContinuousTracking() {
     if (!navigator.geolocation) {
-        alert('La géolocalisation n\'est pas supportée');
+        alert('La gÃ©olocalisation n\'est pas supportÃ©e');
         return;
     }
     
@@ -2677,15 +2630,15 @@ function startContinuousTracking() {
         options
     );
     
-    // Mettre à jour l'interface
+    // Mettre Ã  jour l'interface
     const btn = document.querySelector('.float-btn[onclick="locateUser()"]');
     if (btn) {
         btn.style.background = 'linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)';
-        btn.title = 'Arrêter le suivi';
+        btn.title = 'ArrÃªter le suivi';
         btn.setAttribute('onclick', 'stopContinuousTracking()');
     }
     
-    showNotification('Suivi de position activé', 'info');
+    showNotification('Suivi de position activÃ©', 'info');
 }
 
 function stopContinuousTracking() {
@@ -2704,7 +2657,7 @@ function stopContinuousTracking() {
         btn.setAttribute('onclick', 'locateUser()');
     }
     
-    showNotification('Suivi de position arrêté', 'info');
+    showNotification('Suivi de position arrÃªtÃ©', 'info');
 }
 
 function showNotification(message, type = 'info') {
@@ -2757,17 +2710,17 @@ geoStyles.textContent = `
 `;
 document.head.appendChild(geoStyles);
 
-console.log('[PWA] Module de géolocalisation avancée chargé');
+console.log('[PWA] Module de gÃ©olocalisation avancÃ©e chargÃ©');
 
 // ============================================
-// REQUÊTES ATTRIBUTAIRES AVANCÉES
+// REQUÃŠTES ATTRIBUTAIRES AVANCÃ‰ES
 // ============================================
 let currentAttrOperator = 'equals';
 
 function setAttrOperator(op) {
     currentAttrOperator = op;
     
-    // Mettre à jour l'apparence des boutons
+    // Mettre Ã  jour l'apparence des boutons
     document.querySelectorAll('.btn-operator').forEach(btn => {
         btn.style.background = 'white';
         btn.style.color = '#333';
@@ -2787,7 +2740,7 @@ function updateAttrFields() {
     let fieldSelect = document.getElementById('attrFieldSelect');
     
     // Vider les options actuelles
-    fieldSelect.innerHTML = '<option value="">-- Sélectionner un champ --</option>';
+    fieldSelect.innerHTML = '<option value="">-- SÃ©lectionner un champ --</option>';
     
     // Ajouter les champs selon la couche
     let commonFields = [
@@ -2799,7 +2752,7 @@ function updateAttrFields() {
             { value: 'Nom', label: 'Nom' },
             { value: 'type', label: 'Type' },
             { value: 'code', label: 'Code' },
-            { value: 'dept', label: 'Département' }
+            { value: 'dept', label: 'DÃ©partement' }
         ],
         'Localites': [
             { value: 'Nom', label: 'Nom' },
@@ -2807,16 +2760,16 @@ function updateAttrFields() {
             { value: 'code', label: 'Code' }
         ],
         'Departement': [
-            { value: 'dept', label: 'Nom du département' },
+            { value: 'dept', label: 'Nom du dÃ©partement' },
             { value: 'code', label: 'Code' }
         ],
         'Arrondissement': [
             { value: 'arr', label: 'Nom de l\'arrondissement' },
             { value: 'code', label: 'Code' },
-            { value: 'dept', label: 'Département' }
+            { value: 'dept', label: 'DÃ©partement' }
         ],
         'Region': [
-            { value: 'region', label: 'Nom de la région' },
+            { value: 'region', label: 'Nom de la rÃ©gion' },
             { value: 'code', label: 'Code' }
         ],
         'Routes': [
@@ -2842,26 +2795,26 @@ function executeAdvancedAttrQuery() {
     let searchValue = document.getElementById('attrSearchValue').value.trim();
     
     if (!layerName) {
-        alert('Veuillez sélectionner une couche');
+        alert('Veuillez sÃ©lectionner une couche');
         return;
     }
     if (!fieldName) {
-        alert('Veuillez sélectionner un champ');
+        alert('Veuillez sÃ©lectionner un champ');
         return;
     }
     if (!searchValue) {
-        alert('Veuillez entrer une valeur à rechercher');
+        alert('Veuillez entrer une valeur Ã  rechercher');
         return;
     }
     
-    // Récupérer la couche
+    // RÃ©cupÃ©rer la couche
     let targetLayer = getLayerByName(layerName);
     if (!targetLayer) {
-        alert('Couche non trouvée: ' + layerName);
+        alert('Couche non trouvÃ©e: ' + layerName);
         return;
     }
     
-    // Réinitialiser les styles
+    // RÃ©initialiser les styles
     resetAllStyles();
     
     let results = [];
@@ -2885,7 +2838,7 @@ function executeAdvancedAttrQuery() {
                 }
             }
         } else {
-            // Chercher dans un champ spécifique avec variantes
+            // Chercher dans un champ spÃ©cifique avec variantes
             let variants = [fieldName, fieldName.toUpperCase(), fieldName.toLowerCase(),
                 fieldName.charAt(0).toUpperCase() + fieldName.slice(1).toLowerCase()];
             
@@ -2931,7 +2884,7 @@ function showAdvancedAttrResults(results, searchValue) {
     let resultsDiv = document.getElementById('attrResultsContent');
     let resultsContainer = document.getElementById('attrResults');
     
-    // Cacher les étapes et montrer résultats
+    // Cacher les Ã©tapes et montrer rÃ©sultats
     document.getElementById('attrStep1').style.display = 'none';
     document.getElementById('attrStep2').style.display = 'none';
     document.getElementById('attrStep3').style.display = 'none';
@@ -2939,10 +2892,10 @@ function showAdvancedAttrResults(results, searchValue) {
     resultsContainer.style.display = 'block';
     
     if (results.length === 0) {
-        resultsDiv.innerHTML = `<p style="color: #c62828; text-align: center; padding: 20px;"><i class="fas fa-times-circle"></i> Aucun résultat pour "${searchValue}"</p>`;
+        resultsDiv.innerHTML = `<p style="color: #c62828; text-align: center; padding: 20px;"><i class="fas fa-times-circle"></i> Aucun rÃ©sultat pour "${searchValue}"</p>`;
     } else {
         let html = `<div style="background: #e8f5e9; padding: 10px; border-radius: 8px; margin-bottom: 15px; text-align: center;">`;
-        html += `<i class="fas fa-check-circle" style="color: #2e7d32;"></i> <b>${results.length}</b> résultat(s) trouvé(s)`;
+        html += `<i class="fas fa-check-circle" style="color: #2e7d32;"></i> <b>${results.length}</b> rÃ©sultat(s) trouvÃ©(s)`;
         html += `</div>`;
         html += `<div style="display: flex; flex-direction: column; gap: 8px;">`;
         
@@ -2958,7 +2911,7 @@ function showAdvancedAttrResults(results, searchValue) {
         });
         
         if (results.length > 20) {
-            html += `<p style="text-align: center; color: #888;">... et ${results.length - 20} autres résultats</p>`;
+            html += `<p style="text-align: center; color: #888;">... et ${results.length - 20} autres rÃ©sultats</p>`;
         }
         
         html += `</div>`;
@@ -2967,7 +2920,7 @@ function showAdvancedAttrResults(results, searchValue) {
         // Sauvegarder pour le zoom
         window.advancedAttrResults = results;
         
-        // Zoom sur le premier résultat
+        // Zoom sur le premier rÃ©sultat
         setTimeout(() => {
             if (results[0].layer.getBounds) {
                 map.fitBounds(results[0].layer.getBounds().pad(0.3));
@@ -2990,7 +2943,7 @@ function zoomToAdvancedAttrResult(index) {
         map.setView(layer.getLatLng(), 16);
     }
     
-    // Ouvrir popup avec toutes les propriétés
+    // Ouvrir popup avec toutes les propriÃ©tÃ©s
     let popupContent = '<b>' + res.name + '</b><br><hr style="margin: 8px 0;">';
     for (let key in res.properties) {
         popupContent += `<b>${key}:</b> ${res.properties[key]}<br>`;
@@ -3000,7 +2953,7 @@ function zoomToAdvancedAttrResult(index) {
 
 function clearAttrQuery() {
     document.getElementById('attrLayerSelect').value = '';
-    document.getElementById('attrFieldSelect').innerHTML = '<option value="">-- Sélectionner un champ --</option>';
+    document.getElementById('attrFieldSelect').innerHTML = '<option value="">-- SÃ©lectionner un champ --</option>';
     document.getElementById('attrSearchValue').value = '';
     
     document.getElementById('attrStep1').style.display = 'block';
@@ -3014,17 +2967,17 @@ function clearAttrQuery() {
 }
 
 // ============================================
-// REQUÊTES SPATIALES AVANCÉES
+// REQUÃŠTES SPATIALES AVANCÃ‰ES
 // ============================================
 let currentSpatialType = 'buffer';
-let currentBufferDistance = 1000; // 1km par défaut
+let currentBufferDistance = 1000; // 1km par dÃ©faut
 let currentSpatialResults = [];
 let currentBufferCircle = null;
 
 function setSpatialQueryType(type) {
     currentSpatialType = type;
     
-    // Mettre à jour l'apparence des boutons
+    // Mettre Ã  jour l'apparence des boutons
     document.querySelectorAll('.btn-spatial-type').forEach(btn => {
         btn.style.background = 'white';
         btn.style.color = '#333';
@@ -3038,7 +2991,7 @@ function setSpatialQueryType(type) {
         btn.style.borderColor = '#667eea';
     }
     
-    // Afficher les paramètres appropriés
+    // Afficher les paramÃ¨tres appropriÃ©s
     document.getElementById('spatialBufferParams').style.display = (type === 'buffer') ? 'block' : 'none';
     document.getElementById('spatialNearestParams').style.display = (type === 'nearest') ? 'block' : 'none';
     document.getElementById('spatialExecute').style.display = (type === 'click') ? 'none' : 'block';
@@ -3048,7 +3001,7 @@ function setBufferDistance(dist) {
     currentBufferDistance = dist;
     document.getElementById('bufferDistanceValue').value = dist;
     
-    // Mettre à jour l'apparence
+    // Mettre Ã  jour l'apparence
     document.querySelectorAll('.btn-buffer').forEach(btn => {
         btn.style.background = 'white';
         btn.style.color = '#333';
@@ -3067,7 +3020,7 @@ function executeAdvancedSpatialQuery() {
     let targetLayerName = document.getElementById('spatialTargetLayer').value;
     
     if (!targetLayerName) {
-        alert('Veuillez sélectionner une couche à rechercher');
+        alert('Veuillez sÃ©lectionner une couche Ã  rechercher');
         return;
     }
     
@@ -3091,14 +3044,14 @@ function executeAdvancedSpatialQuery() {
 function startClickQueryAdvanced() {
     let targetLayerName = document.getElementById('spatialTargetLayer').value;
     if (!targetLayerName) {
-        alert('Veuillez sélectionner une couche');
+        alert('Veuillez sÃ©lectionner une couche');
         return;
     }
     
     closeModal('spatialQueryModal');
     
     setTimeout(() => {
-        alert('Cliquez sur la carte pour voir les éléments proches');
+        alert('Cliquez sur la carte pour voir les Ã©lÃ©ments proches');
     }, 300);
     
     map.once('click', function(e) {
@@ -3107,7 +3060,7 @@ function startClickQueryAdvanced() {
 }
 
 function performAdvancedSpatialSearch(latlng, targetLayerName) {
-    console.log('[SPATIAL] Recherche démarrée', latlng, targetLayerName, 'type:', currentSpatialType, 'distance:', currentBufferDistance);
+    console.log('[SPATIAL] Recherche dÃ©marrÃ©e', latlng, targetLayerName, 'type:', currentSpatialType, 'distance:', currentBufferDistance);
     resetAllStyles();
     
     // Supprimer l'ancien buffer
@@ -3118,17 +3071,17 @@ function performAdvancedSpatialSearch(latlng, targetLayerName) {
     
     let targetLayer = getLayerByName(targetLayerName);
     if (!targetLayer) {
-        console.error('[SPATIAL] Couche non trouvée:', targetLayerName);
-        alert('Couche non trouvée');
+        console.error('[SPATIAL] Couche non trouvÃ©e:', targetLayerName);
+        alert('Couche non trouvÃ©e');
         return;
     }
-    console.log('[SPATIAL] Couche trouvée, nombre d\'éléments:', Object.keys(targetLayer._layers || {}).length);
+    console.log('[SPATIAL] Couche trouvÃ©e, nombre d\'Ã©lÃ©ments:', Object.keys(targetLayer._layers || {}).length);
     
     currentSpatialResults = [];
     let point = latlng;
     let checkedCount = 0;
     
-    // Créer le cercle de buffer si type buffer
+    // CrÃ©er le cercle de buffer si type buffer
     if (currentSpatialType === 'buffer') {
         currentBufferCircle = L.circle(point, {
             radius: currentBufferDistance,
@@ -3137,7 +3090,7 @@ function performAdvancedSpatialSearch(latlng, targetLayerName) {
             color: '#667eea',
             weight: 2
         }).addTo(map);
-        console.log('[SPATIAL] Buffer créé avec distance:', currentBufferDistance);
+        console.log('[SPATIAL] Buffer crÃ©Ã© avec distance:', currentBufferDistance);
     }
     
     // Rechercher dans la couche
@@ -3145,7 +3098,7 @@ function performAdvancedSpatialSearch(latlng, targetLayerName) {
         let layerPoint = getLayerCenter(layer);
         checkedCount++;
         if (!layerPoint) {
-            console.log('[SPATIAL] Élément', checkedCount, 'sans position');
+            console.log('[SPATIAL] Ã‰lÃ©ment', checkedCount, 'sans position');
             return;
         }
         
@@ -3163,7 +3116,7 @@ function performAdvancedSpatialSearch(latlng, targetLayerName) {
         }
         
         if (shouldInclude) {
-            console.log('[SPATIAL] Élément trouvé à', Math.round(distance), 'm');
+            console.log('[SPATIAL] Ã‰lÃ©ment trouvÃ© Ã ', Math.round(distance), 'm');
             currentSpatialResults.push({
                 layer: layer,
                 distance: distance,
@@ -3173,7 +3126,7 @@ function performAdvancedSpatialSearch(latlng, targetLayerName) {
         }
     });
     
-    console.log('[SPATIAL] Total vérifié:', checkedCount, 'Trouvés:', currentSpatialResults.length);
+    console.log('[SPATIAL] Total vÃ©rifiÃ©:', checkedCount, 'TrouvÃ©s:', currentSpatialResults.length);
     
     // Trier par distance
     currentSpatialResults.sort((a, b) => a.distance - b.distance);
@@ -3184,10 +3137,10 @@ function performAdvancedSpatialSearch(latlng, targetLayerName) {
         currentSpatialResults = currentSpatialResults.slice(0, count);
     }
     
-    // Afficher les résultats
+    // Afficher les rÃ©sultats
     showAdvancedSpatialResults(targetLayerName);
     
-    // Zoomer sur les résultats
+    // Zoomer sur les rÃ©sultats
     zoomToSpatialResultsAdvanced();
 }
 
@@ -3208,7 +3161,7 @@ function performClickSearch(latlng, targetLayerName) {
             {lat: layerPoint.lat, lng: layerPoint.lng}
         );
         
-        // Par défaut, chercher dans 500m pour le clic simple
+        // Par dÃ©faut, chercher dans 500m pour le clic simple
         if (distance <= 500) {
             currentSpatialResults.push({
                 layer: layer,
@@ -3238,7 +3191,7 @@ function showAdvancedSpatialResults(layerName) {
     let resultsDiv = document.getElementById('spatialAdvancedResultsContent');
     let resultsContainer = document.getElementById('spatialAdvancedResults');
     
-    // Cacher les étapes et montrer résultats
+    // Cacher les Ã©tapes et montrer rÃ©sultats
     document.getElementById('spatialStep1').style.display = 'none';
     document.getElementById('spatialStep2').style.display = 'none';
     document.getElementById('spatialBufferParams').style.display = 'none';
@@ -3247,7 +3200,7 @@ function showAdvancedSpatialResults(layerName) {
     resultsContainer.style.display = 'block';
     
     if (currentSpatialResults.length === 0) {
-        resultsDiv.innerHTML = `<p style="color: #c62828; text-align: center; padding: 20px;"><i class="fas fa-times-circle"></i> Aucun résultat trouvé</p>`;
+        resultsDiv.innerHTML = `<p style="color: #c62828; text-align: center; padding: 20px;"><i class="fas fa-times-circle"></i> Aucun rÃ©sultat trouvÃ©</p>`;
     } else {
         let typeLabel = currentSpatialType === 'buffer' ? `dans ${currentBufferDistance}m` : 'les plus proches';
         
@@ -3280,10 +3233,10 @@ function showAdvancedSpatialResults(layerName) {
         resultsDiv.innerHTML = html;
     }
     
-    // Zoomer sur tous les résultats AVANT de rouvrir le modal
+    // Zoomer sur tous les rÃ©sultats AVANT de rouvrir le modal
     zoomToSpatialResultsAdvanced();
     
-    // Attendre un peu puis rouvrir le modal pour voir les résultats
+    // Attendre un peu puis rouvrir le modal pour voir les rÃ©sultats
     setTimeout(() => {
         let modal = document.getElementById('spatialQueryModal');
         if (modal) modal.classList.add('active');
@@ -3335,7 +3288,7 @@ function clearAdvancedSpatialQuery() {
     resetAllStyles();
     currentSpatialResults = [];
     
-    // Réafficher les étapes
+    // RÃ©afficher les Ã©tapes
     document.getElementById('spatialStep1').style.display = 'block';
     document.getElementById('spatialStep2').style.display = 'block';
     
@@ -3350,4 +3303,5 @@ function clearAdvancedSpatialQuery() {
     document.getElementById('spatialTargetLayer').value = '';
 }
 
-console.log('[PWA] Requêtes avancées chargées');
+console.log('[PWA] RequÃªtes avancÃ©es chargÃ©es');
+
