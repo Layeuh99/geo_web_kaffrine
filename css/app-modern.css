@@ -1803,17 +1803,18 @@ select {
     .navbar-menu li:nth-child(4) {
         display: block !important;
         position: fixed;
-        top: 70px;
-        background: rgba(102, 126, 234, 0.9);
+        top: 65px; /* Juste en dessous du header (60px + 5px marge) */
+        background: rgba(102, 126, 234, 0.95);
         border-radius: 8px;
         padding: 10px;
         margin: 5px;
-        z-index: 1000;
+        z-index: 999; /* Inférieur au header pour éviter le chevauchement */
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
     
     .navbar-menu li:nth-child(1) { left: 10px; }  /* Accueil */
-    .navbar-menu li:nth-child(2) { left: 70px; }  /* Couches */
-    .navbar-menu li:nth-child(4) { left: 130px; } /* À propos */
+    .navbar-menu li:nth-child(2) { left: 75px; }  /* Couches (décalé pour éviter le chevauchement) */
+    .navbar-menu li:nth-child(4) { left: 140px; } /* À propos (décalé pour éviter le chevauchement) */
     
     .navbar-menu li:nth-child(1) a,
     .navbar-menu li:nth-child(2) a,
