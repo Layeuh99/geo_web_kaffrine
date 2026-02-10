@@ -553,7 +553,16 @@
         <script src="data/Ecoles_8.js"></script>
         
 <!-- Application moderne -->
-<script src="js/app-modern.js?v=20"></script>
+<script>
+    // Forcer le rechargement pour contourner le cache GitHub Pages
+    const timestamp = Date.now();
+    const script = document.createElement('script');
+    script.src = `js/app-modern.js?v=20&t=${timestamp}`;
+    script.onload = function() {
+        console.log('[CACHE] Script rechargé avec timestamp:', timestamp);
+    };
+    document.head.appendChild(script);
+</script>
 
 <!-- Service Worker Registration -->
 <script>
