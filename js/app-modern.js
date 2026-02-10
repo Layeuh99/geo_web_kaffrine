@@ -950,9 +950,13 @@ function toggleLeftPanel() {
         panel.classList.toggle('collapsed');
         let icon = panel.querySelector('.panel-toggle i');
         if (panel.classList.contains('collapsed')) {
+            // Panneau fermé = icône pointe vers la droite
             icon.className = 'fas fa-chevron-right';
+            console.log('[TOGGLE] Desktop - panneau gauche fermé');
         } else {
+            // Panneau ouvert = icône pointe vers la gauche
             icon.className = 'fas fa-chevron-left';
+            console.log('[TOGGLE] Desktop - panneau gauche ouvert');
         }
         // Redimensionner la carte
         setTimeout(() => {
