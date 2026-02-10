@@ -881,19 +881,35 @@ function initializePanels() {
 // FONCTIONS UI - PANNEAUX (CORRIGÉ POUR MOBILE)
 // ============================================
 function toggleLeftPanel() {
+    console.log('[TOGGLE] toggleLeftPanel appelé');
     let panel = document.getElementById('sidebarLeft');
     let isMobile = window.innerWidth <= 768;
+    
+    console.log('[TOGGLE] Panel trouvé:', panel ? 'oui' : 'non');
+    console.log('[TOGGLE] Mode mobile:', isMobile, 'Largeur:', window.innerWidth);
+    
+    if (!panel) {
+        console.error('[TOGGLE] Panneau sidebarLeft non trouvé!');
+        return;
+    }
     
     if (isMobile) {
         // Sur mobile, utiliser la classe active
         let isActive = panel.classList.toggle('active');
+        console.log('[TOGGLE] Mobile - active basculé vers:', isActive);
+        
         // Fermer l'autre panneau s'il est ouvert
-        document.getElementById('sidebarRight').classList.remove('active');
+        let rightPanel = document.getElementById('sidebarRight');
+        if (rightPanel) {
+            rightPanel.classList.remove('active');
+        }
         
         // Si on ferme le panneau, recentrer la carte après un délai
         if (!isActive) {
             setTimeout(() => {
-                map.invalidateSize();
+                if (window.map) {
+                    map.invalidateSize();
+                }
             }, 300);
         }
     } else {
@@ -907,7 +923,9 @@ function toggleLeftPanel() {
         }
         // Redimensionner la carte
         setTimeout(() => {
-            map.invalidateSize();
+            if (window.map) {
+                map.invalidateSize();
+            }
         }, 300);
     }
 }

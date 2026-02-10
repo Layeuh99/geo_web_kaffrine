@@ -1786,8 +1786,9 @@ select {
         top: 60px;
         left: 0;
         right: 0;
-        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         flex-direction: column;
+        align-items: stretch;
         padding: 10px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
@@ -1795,7 +1796,32 @@ select {
     .navbar-menu.active {
         display: flex;
     }
-
+    
+    /* Garder les éléments essentiels visibles */
+    .navbar-menu li:nth-child(1),
+    .navbar-menu li:nth-child(2),
+    .navbar-menu li:nth-child(4) {
+        display: block !important;
+        position: fixed;
+        top: 70px;
+        background: rgba(102, 126, 234, 0.9);
+        border-radius: 8px;
+        padding: 10px;
+        margin: 5px;
+        z-index: 1000;
+    }
+    
+    .navbar-menu li:nth-child(1) { left: 10px; }  /* Accueil */
+    .navbar-menu li:nth-child(2) { left: 70px; }  /* Couches */
+    .navbar-menu li:nth-child(4) { left: 130px; } /* À propos */
+    
+    .navbar-menu li:nth-child(1) a,
+    .navbar-menu li:nth-child(2) a,
+    .navbar-menu li:nth-child(4) a {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+}
     .navbar-toggle {
         display: block;
     }
