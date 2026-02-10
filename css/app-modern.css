@@ -354,6 +354,13 @@ body.dark-theme .type-btn:hover {
     border-left: 1px solid #ddd;
 }
 
+.sidebar-left.visible {
+    width: 320px !important;
+    min-width: 320px !important;
+    max-width: 320px !important;
+    visibility: visible !important;
+}
+
 .sidebar-left.collapsed {
     width: 0 !important;
     min-width: 0 !important;
