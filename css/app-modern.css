@@ -2125,3 +2125,139 @@ select {
         font-size: 1.1rem;
     }
 }
+
+/* ============================================
+   AMÉLIORATIONS RESPONSIVES MODERNES v2.0
+   ============================================ */
+
+/* 📱 Points d'arrêt modernes */
+:root {
+  --mobile-breakpoint: 480px;
+  --tablet-breakpoint: 768px;
+  --desktop-breakpoint: 1024px;
+  --large-breakpoint: 1440px;
+}
+
+/* 🎨 Container fluide */
+.app-container {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0;
+  min-height: 100vh;
+}
+
+/* 📊 Tablette : équilibre desktop/mobile */
+@media (min-width: 481px) and (max-width: 767px) {
+  .app-container {
+    grid-template-columns: 280px 1fr 280px;
+  }
+  
+  .sidebar-left,
+  .sidebar-right {
+    width: 280px;
+    position: relative;
+    transform: none;
+  }
+  
+  .map-container {
+    min-height: 500px;
+  }
+  
+  .navbar-menu {
+    display: flex;
+    position: static;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+  }
+  
+  .navbar-menu li {
+    position: static;
+  }
+  
+  .mobile-panel-buttons {
+    display: none;
+  }
+  
+  .floating-controls {
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+/* 🖥️ Desktop : espace et fonctionnalités complètes */
+@media (min-width: 1025px) {
+  .app-container {
+    grid-template-columns: 320px 1fr 320px;
+  }
+  
+  .sidebar-left,
+  .sidebar-right {
+    width: 320px;
+  }
+  
+  .navbar {
+    padding: 0 20px;
+  }
+  
+  .navbar-menu {
+    gap: 15px;
+  }
+  
+  .navbar-menu a {
+    padding: 12px 20px;
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2);
+  }
+  
+  .navbar-menu a:hover {
+    background-color: rgba(255,255,255,0.15);
+    transform: translateY(-2px);
+  }
+}
+
+/* 🖥️ Grand écran : optimisations */
+@media (min-width: 1441px) {
+  .app-container {
+    grid-template-columns: 350px 1fr 350px;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+  
+  .sidebar-left,
+  .sidebar-right {
+    width: 350px;
+  }
+  
+  .panel-content {
+    font-size: 1.05rem;
+  }
+}
+
+/* 🌙 Mode sombre : améliorations responsive */
+@media (max-width: 768px) {
+  body.dark-theme .navbar-menu li:nth-child(1),
+  body.dark-theme .navbar-menu li:nth-child(2),
+  body.dark-theme .navbar-menu li:nth-child(4) {
+    background: rgba(30, 30, 40, 0.95);
+  }
+}
+
+/* 🎯 Animations et transitions modernes */
+@media (prefers-reduced-motion: no-motion) {
+  .sidebar-left,
+  .sidebar-right,
+  .navbar-menu a,
+  .mobile-panel-btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar-left,
+  .sidebar-right,
+  .navbar-menu a,
+  .mobile-panel-btn {
+    transition: none;
+  }
+}

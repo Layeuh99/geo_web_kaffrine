@@ -1,7 +1,8 @@
 {
   "name": "GéoWeb Kaffrine",
   "short_name": "GéoWeb Kaffrine",
-  "description": "Application de cartographie interactive pour la région de Kaffrine avec données géographiques, requêtes spatiales et attributaires",
+  "description": "Application Web GIS moderne pour la région de Kaffrine - Cartographie interactive, données géographiques, requêtes spatiales et attributaires",
+  "version": "3.0.0",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#1e3c72",
@@ -60,35 +61,35 @@
       "purpose": "maskable any"
     }
   ],
-  "categories": ["navigation", "utilities", "travel"],
+  "categories": ["navigation", "utilities", "travel", "education", "reference"],
   "screenshots": [
     {
       "src": "screenshots/screenshot1.png",
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "Carte interactive de Kaffrine"
+      "label": "Carte interactive de GéoWeb Kaffrine - Vue desktop avec couches thématiques"
     },
     {
       "src": "screenshots/screenshot2.png",
       "sizes": "750x1334",
       "type": "image/png",
       "form_factor": "narrow",
-      "label": "Vue mobile de l'application"
+      "label": "GéoWeb Kaffrine Mobile - Vue mobile avec navigation optimisée"
     }
   ],
   "shortcuts": [
     {
-      "name": "Ma Position",
-      "short_name": "Position",
-      "description": "Centrer sur ma position actuelle",
+      "name": "Ma Position Géographique",
+      "short_name": "Géolocalisation",
+      "description": "Centrer la carte sur ma position GPS actuelle",
       "url": "?action=locate",
       "icons": [{ "src": "icons/shortcut-locate.png", "sizes": "96x96" }]
     },
     {
-      "name": "Requête Spatiale",
-      "short_name": "Requête",
-      "description": "Ouvrir la requête spatiale",
+      "name": "Requête Spatiale Avancée",
+      "short_name": "Requête Spatiale",
+      "description": "Ouvrir l'outil de requête spatiale avec options avancées",
       "url": "?action=spatial",
       "icons": [{ "src": "icons/shortcut-query.png", "sizes": "96x96" }]
     }
