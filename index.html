@@ -47,8 +47,8 @@
             </div>
             <ul class="navbar-menu" role="menubar" aria-label="Menu principal">
                 <li><a href="#" onclick="showHome()" role="menuitem" aria-label="Accueil"><i class="fas fa-home" aria-hidden="true"></i> <span>Accueil</span></a></li>
-                <li><a href="#" onclick="toggleLeftPanel()" role="menuitem" aria-label="Panneau des couches"><i class="fas fa-layer-group" aria-hidden="true"></i> <span>Couches</span></a></li>
-                <li><a href="#" onclick="toggleRightPanel()" role="menuitem" aria-label="Fonds de carte et légende"><i class="fas fa-palette" aria-hidden="true"></i> <span>Fonds & Légende</span></a></li>
+                <li><a href="#" onclick="toggleLeftPanel()" style="opacity: 0.5; pointer-events: none;" role="menuitem" aria-label="Panneau des couches"><i class="fas fa-layer-group" aria-hidden="true"></i> <span>Couches</span></a></li>
+                <li><a href="#" onclick="toggleRightPanel()" style="opacity: 0.5; pointer-events: none;" role="menuitem" aria-label="Fonds de carte et légende"><i class="fas fa-palette" aria-hidden="true"></i> <span>Fonds & Légende</span></a></li>
                 <li><a href="#" onclick="showAbout()" role="menuitem" aria-label="À propos de l'application"><i class="fas fa-info-circle" aria-hidden="true"></i> <span>À propos</span></a></li>
                 <li><a href="#" onclick="showSpatialQuery()" role="menuitem" aria-label="Requête spatiale"><i class="fas fa-draw-polygon" aria-hidden="true"></i> <span>Requête spatiale</span></a></li>
                 <li><a href="#" onclick="showAttributeQuery()" role="menuitem" aria-label="Requête attributaire"><i class="fas fa-database" aria-hidden="true"></i> <span>Requête attributaire</span></a></li>
@@ -560,6 +560,20 @@
     script.src = `js/app-modern.js?v=20&t=${timestamp}`;
     script.onload = function() {
         console.log('[CACHE] Script rechargé avec timestamp:', timestamp);
+        
+        // Attendre que la carte soit initialisée avant de rendre les boutons fonctionnels
+        setTimeout(() => {
+            console.log('[INIT] Vérification de l\'initialisation de la carte...');
+            
+            // Rendre les boutons cliquables seulement si la carte est prête
+            const toggleButtons = document.querySelectorAll('[onclick*="toggle"]');
+            toggleButtons.forEach(button => {
+                button.style.opacity = '1';
+                button.style.pointerEvents = 'auto';
+            });
+            
+            console.log('[INIT] Boutons des panneaux activés');
+        }, 2000); // Attendre 2 secondes pour l'initialisation
     };
     document.head.appendChild(script);
 </script>
