@@ -964,33 +964,57 @@ function toggleLeftPanel() {
 }
 
 function toggleRightPanel() {
+    console.log('[TOGGLE] toggleRightPanel appelé');
     let panel = document.getElementById('sidebarRight');
     let isMobile = window.innerWidth <= 768;
+    
+    console.log('[TOGGLE] Panel trouvé:', panel ? 'oui' : 'non');
+    console.log('[TOGGLE] Mode mobile:', isMobile, 'Largeur:', window.innerWidth);
+    
+    if (!panel) {
+        console.error('[TOGGLE] Panneau sidebarRight non trouvé!');
+        return;
+    }
     
     if (isMobile) {
         // Sur mobile, utiliser la classe active
         let isActive = panel.classList.toggle('active');
+        console.log('[TOGGLE] Mobile - active basculé vers:', isActive);
+        
         // Fermer l'autre panneau s'il est ouvert
-        document.getElementById('sidebarLeft').classList.remove('active');
+        let leftPanel = document.getElementById('sidebarLeft');
+        if (leftPanel) {
+            leftPanel.classList.remove('active');
+        }
         
         // Si on ferme le panneau, recentrer la carte après un délai
         if (!isActive) {
             setTimeout(() => {
-                map.invalidateSize();
+                if (window.map) {
+                    map.invalidateSize();
+                }
             }, 300);
         }
     } else {
         // Sur desktop, utiliser collapsed
         panel.classList.toggle('collapsed');
         let icon = panel.querySelector('.panel-toggle i');
+        
         if (panel.classList.contains('collapsed')) {
-            icon.className = 'fas fa-chevron-left';
-        } else {
+            // Panneau fermé = icône pointe vers la droite
             icon.className = 'fas fa-chevron-right';
+            console.log('[TOGGLE] Desktop - panneau fermé');
+        } else {
+            // Panneau ouvert = icône pointe vers la gauche
+            icon.className = 'fas fa-chevron-left';
+            console.log('[TOGGLE] Desktop - panneau ouvert');
         }
+        
         // Redimensionner la carte
         setTimeout(() => {
-            map.invalidateSize();
+            if (window.map) {
+                map.invalidateSize();
+            }
         }, 300);
     }
 }
