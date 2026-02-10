@@ -208,7 +208,7 @@ html, body {
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 1000;
+    z-index: 1500;
     gap: 15px;
 }
 
@@ -218,7 +218,7 @@ html, body {
     border-radius: 50%;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
-    border: none;
+    border: 2px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     cursor: pointer;
     font-size: 1.2rem;
@@ -226,6 +226,8 @@ html, body {
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
+    position: relative;
+    z-index: 1501;
 }
 
 .mobile-panel-btn:hover {
@@ -2180,7 +2182,7 @@ select {
   }
   
   .mobile-panel-buttons {
-    display: none;
+    display: flex;
   }
   
   .floating-controls {
