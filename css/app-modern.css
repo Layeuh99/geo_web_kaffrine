@@ -361,6 +361,17 @@ body.dark-theme .type-btn:hover {
     visibility: visible !important;
 }
 
+/* Sur mobile, la classe visible ne doit pas interférer avec le transform */
+@media (max-width: 768px) {
+    .sidebar-left.visible {
+        transform: translateX(-100%) !important;
+    }
+    
+    .sidebar-left.visible.active {
+        transform: translateX(0) !important;
+    }
+}
+
 .sidebar-left.collapsed {
     width: 0 !important;
     min-width: 0 !important;

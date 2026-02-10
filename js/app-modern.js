@@ -860,6 +860,20 @@ function initializePanels() {
             }
             console.log('[INIT] Panneau droit rendu caché');
         }
+    } else {
+        // Sur mobile, s'assurer que les panneaux sont cachés par défaut
+        let leftPanel = document.getElementById('sidebarLeft');
+        let rightPanel = document.getElementById('sidebarRight');
+        
+        if (leftPanel) {
+            leftPanel.classList.remove('active');
+            console.log('[INIT] Panneau gauche caché pour mobile');
+        }
+        
+        if (rightPanel) {
+            rightPanel.classList.remove('active');
+            console.log('[INIT] Panneau droit caché pour mobile');
+        }
     }
 }
 
